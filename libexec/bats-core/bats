@@ -34,6 +34,7 @@ Usage: $cmd [-cr] [-f <regex>] [-j <jobs>] [-p | -t] <test>...
   -r, --recursive  Include tests in subdirectories
   -t, --tap        Show results in TAP format
   -v, --version    Display the version number
+  -n, --verbose    Show note() diag output
 
   For more information, see https://github.com/bats-core/bats-core
 

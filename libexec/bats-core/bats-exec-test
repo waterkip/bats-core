@@ -89,6 +89,16 @@ skip() {
   exit 0
 }
 
+# Similar to Perl's diag in Test::More
+diag() {
+  echo "$@" | sed -e 's/^/# /g' >&3;
+}
+
+note() {
+  [[ ${BATS_VERBOSE:-0} -eq 1 ]] && diag "$@"
+  true
+}
+
 bats_test_begin() {
   BATS_TEST_DESCRIPTION="$1"
   if [[ -n "$BATS_EXTENDED_SYNTAX" ]]; then

@@ -3,6 +3,17 @@
 load test_helper
 fixtures bats
 
+@test "diag prints a message" {
+  run bats "$FIXTURE_ROOT/diag-and-note.bats"
+  [ $status -eq 0 ]
+  [ "${lines[0]}" == "# I diagged" ]
+
+  run bats -n "$FIXTURE_ROOT/diag-and-note.bats"
+  [ $status -eq 0 ]
+  [ "${lines[0]}" == "# I diagged" ]
+  [ "${lines[1]}" == "# I noted" ]
+}
+
 @test "no arguments prints message and usage instructions" {
   run bats
   [ $status -eq 1 ]
